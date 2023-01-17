@@ -29,5 +29,4 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 echo "--------------------Add Docker to Sudo group--------------------"
 sudo groupadd docker && sudo usermod -aG docker $USER && newgrp docker && sudo chmod 777 /var/run/docker.sock
 #run the countainer 
-echo "--------------------run the countainer --------------------"
-sudo docker run  -p 8081:80 -d  ahmedabdoahmed/survey-app-img:1.1
+
