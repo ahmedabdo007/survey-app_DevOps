@@ -33,9 +33,11 @@ pipeline{
             steps {
                 script {
                    sshagent(['ec2-server-key']) {
+
 					def shellCmd = 'bash ./install.sh'
-						sh "scp install.sh ubuntu@ec2-3-89-246-92.compute-1.amazonaws.com:/home/ubuntu"
+					    sh "scp install.sh ubuntu@ec2-3-89-246-92.compute-1.amazonaws.com:/home/ubuntu"
 						sh "ssh -o StrictHostKeyChecking=no ubuntu@ec2-3-89-246-92.compute-1.amazonaws.com ${shellCmd}"
+
 					}
                 }
             }
