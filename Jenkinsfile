@@ -33,8 +33,9 @@ pipeline{
             steps {
                 script {
                    sshagent(['ec2-server-key']) {
-					def dockerCmd = 'docker run  -p 8081:80 -d  ahmedabdoahmed/cv-website:1.3'
-						sh "ssh -o StrictHostKeyChecking=no ubuntu@ec2-3-73-53-138.eu-central-1.compute.amazonaws.com ${dockerCmd}"
+					def shellCmd = 'bash ./install.sh'
+						sh "scp install.sh ubuntu@ec2-3-89-246-92.compute-1.amazonaws.com:/home/ubuntu"
+						sh "ssh -o StrictHostKeyChecking=no ubuntu@ec2-3-89-246-92.compute-1.amazonaws.com ${shellCmd}"
 					}
                 }
             }
