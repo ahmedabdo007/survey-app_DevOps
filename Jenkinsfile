@@ -8,7 +8,12 @@ pipeline{
 
 	stages {
 
+		stage('Build') {
 
+			steps {
+				sh 'docker build -t ahmedabdoahmed/survey-app-img:1.1 .'
+			}
+		}
 
 		stage('Login') {
 
@@ -16,13 +21,14 @@ pipeline{
 				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
 			}
 		}
-		stage('Build') {
+
+
+		stage('Push') {
 
 			steps {
-				sh 'ansible-playbook playbook.yml'
+				sh 'docker push ahmedabdoahmed/survey-app-img:1.1'
 			}
 		}
-		
         stage('deploy') {
             steps {
                 script {
