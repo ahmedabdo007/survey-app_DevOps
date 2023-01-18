@@ -37,7 +37,7 @@ pipeline{
 				
 					def dockerCmd = 'docker run -d --name django-container -p 4000:8000 ahmedabdoahmed/survey-app-img'
 
-						sh "ssh -o StrictHostKeyChecking=no ubuntu@ec2-3-89-246-92.compute-1.amazonaws.com ${dockerCmd}"
+						sh "ssh -o StrictHostKeyChecking=no ubuntu@ec2-54-210-59-22.compute-1.amazonaws.com ${dockerCmd}"
 
 					}
                 }
